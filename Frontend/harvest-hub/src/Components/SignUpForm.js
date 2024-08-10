@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SignUpForm.css'; // Import the CSS file
 
 const SignUpForm = () => {
     const [name, setName] = useState('');
@@ -19,16 +20,52 @@ const SignUpForm = () => {
     };
 
     return (
-        <form onSubmit={handleSignUp}>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value="farmer">Farmer</option>
-                <option value="consumer">Consumer</option>
-            </select>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSignUp}>
+                <h2>Sign Up</h2>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
+                        required
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <select
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
+                        className="form-control"
+                    >
+                        <option value="farmer">Farmer</option>
+                        <option value="consumer">Consumer</option>
+                    </select>
+                </div>
+                <button type="submit" className="btn-primary">Sign Up</button>
+            </form>
+        </div>
     );
 };
 

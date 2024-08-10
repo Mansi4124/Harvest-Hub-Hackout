@@ -1,0 +1,61 @@
+/* Home.css */
+
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.carousel-container {
+    margin-bottom: 40px;
+}
+
+.carousel-inner img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.about-us {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.about-us h2 {
+    margin-bottom: 15px;
+    font-size: 1.75rem;
+    color: #495057;
+}
+
+.about-us p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.photo-gallery {
+    margin-top: 40px;
+}
+
+.photo-gallery h2 {
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+    color: #495057;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}

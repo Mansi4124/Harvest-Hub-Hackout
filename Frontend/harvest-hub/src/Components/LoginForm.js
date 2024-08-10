@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './LoginForm.css'; // Import the CSS file
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -10,26 +11,51 @@ const LoginForm = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-            const { token, role } = response.data;
-            localStorage.setItem('token', token);
+            const response = await axios.post('http://localhost:5000/api/auth', { email, password });
+            console.log(response)
+            const { role } = response.data;
+           
             if (role === 'farmer') {
                 navigate('/farmer-dashboard');
-            } else {
+            } else if (role === 'consumer') {
                 navigate('/consumer-dashboard');
+            } else {
+                alert('Unknown role');
             }
         } catch (error) {
             console.error(error);
             alert('Invalid credentials');
         }
     };
+    
 
     return (
-        <form onSubmit={handleLogin}>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-            <button type="submit">Login</button>
-        </form>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleLogin}>
+                <h2>Login</h2>
+                <div className="form-group">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                        className="form-control"
+                    />
+                </div>
+                <button type="submit" className="btn btn-primary">Login</button>
+            </form>
+        </div>
     );
 };
 
